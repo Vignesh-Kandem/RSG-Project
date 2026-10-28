@@ -21,12 +21,17 @@ from database import get_connection, init_db, DB_PATH
 
 logger = logging.getLogger(__name__)
 
-# Path to the source CSV
-CSV_PATH = os.path.join(
-    os.path.dirname(os.path.abspath(__file__)),
-    "input",
-    "ai_bi_assistant_sales_data - GET.csv"
-)
+# Path to the source CSV (case-resilient for Linux / Render deployments)
+def _resolve_csv_path() -> str:
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    filename = "ai_bi_assistant_sales_data - GET.csv"
+    for folder in ["Input", "input"]:
+        candidate = os.path.join(base_dir, folder, filename)
+        if os.path.exists(candidate):
+            return candidate
+    return os.path.join(base_dir, "Input", filename)
+
+CSV_PATH = _resolve_csv_path()
 
 
 def validate_row(row: pd.Series) -> Tuple[bool, str, str]:

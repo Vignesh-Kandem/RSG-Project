@@ -2,6 +2,7 @@
 Streamlit Frontend for AI BI Assistant.
 Professional, responsive interface for business intelligence queries.
 """
+import os
 import streamlit as st
 import requests
 import pandas as pd
@@ -9,7 +10,7 @@ import json
 from typing import Optional, Dict, Any
 
 # ─── Configuration ──────────────────────────────────────────────────────
-API_BASE_URL = "http://127.0.0.1:8000"
+API_BASE_URL = os.environ.get("API_BASE_URL", "http://127.0.0.1:8000").rstrip("/")
 
 st.set_page_config(
     page_title="AI Business Intelligence Assistant",

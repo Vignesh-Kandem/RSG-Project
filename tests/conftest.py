@@ -79,13 +79,14 @@ def empty_db(test_db):
 
 @pytest.fixture
 def csv_path():
-    """Return path to the real CSV file."""
-    path = os.path.join(
-        os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
-        "input",
-        "ai_bi_assistant_sales_data - GET.csv"
-    )
-    return path
+    """Return path to the real CSV file (case-resilient for Linux / Render)."""
+    base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    filename = "ai_bi_assistant_sales_data - GET.csv"
+    for folder in ["Input", "input"]:
+        candidate = os.path.join(base_dir, folder, filename)
+        if os.path.exists(candidate):
+            return candidate
+    return os.path.join(base_dir, "Input", filename)
 
 
 @pytest.fixture
