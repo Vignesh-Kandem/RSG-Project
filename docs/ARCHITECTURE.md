@@ -122,3 +122,4 @@ flowchart LR
 - **Vectorless RAG**: Providing table schema, column definitions, and business rule prompt templates directly into the LLM context window without requiring heavy vector databases.
 - **Agentic Multi-Step Reasoning**: Allowing an LLM agent to decompose complex questions (e.g. "Which product had the greatest drop in sales between February and March?") into multiple analytical queries.
 - **AST SQL Guardrails**: Using `sqlglot` or `sqlparse` to validate LLM-generated SQL against an allowlist of read-only abstract syntax tree expressions before dispatching to SQLite.
+

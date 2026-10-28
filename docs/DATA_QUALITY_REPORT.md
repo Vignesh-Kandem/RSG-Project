@@ -79,3 +79,4 @@ CREATE TABLE data_quality_log (
 ```
 
 This guarantees complete traceability and provides transparency to business stakeholders via the `GET /data-quality` API and the Streamlit UI Data Quality tab.
+

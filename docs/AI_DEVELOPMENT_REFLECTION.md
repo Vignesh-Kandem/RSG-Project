@@ -92,3 +92,4 @@ With an additional day of development, the following enhancements would be prior
 4. **Continuous Integration & Automated Ingestion Pipeline**:
    - Add GitHub Actions CI workflow to run pytest, flake8, and black on every commit.
    - Implement file watcher / webhook endpoint to trigger automatic ingestion when a new batch CSV is uploaded.
+
